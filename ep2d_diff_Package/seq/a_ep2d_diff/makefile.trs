@@ -1,0 +1,124 @@
+##----------------------------------------------------------------------------------
+## <copyright file="makefile.trs" company="Siemens Healthcare GmbH">
+##   Copyright (C) Siemens Healthcare GmbH, 2015. All Rights Reserved. Confidential.
+## </copyright>
+##----------------------------------------------------------------------------------
+
+#ADD_TARGET(test.u) # automatically disabled by packaging
+
+IF_WIN(DEBUGGER_CMD("$(OutDir)/SeqTestFrame.exe" "-s $(TargetPath)"))
+
+VS_ADD_GROUP_ITEMS(Config, /Config/MriProduct/MrImaging, SequenceSettings_General.xml)
+VS_ADD_GROUP_ITEMS(token_files, /testdata/MrImaging/seq/a_ep2d_diff/input/token_files, "*.tok")
+
+##-----------------------------------------------------------------------------
+## local compiler flags
+##
+CPPFLAGS (-D_CONSOLE)
+CPPFLAGS (-DCOMPILE_EP2D_DIFF)
+CPPFLAGS (-DZOOM_2DRF)
+CPPFLAGS (-DZOOM_EXTENDED)
+CPPFLAGS (-DBUILD_SEQU)
+CPPFLAGS (-DSEQUENCE_CLASS_EP2D)
+CPPFLAGS (-DSEQUENCE_CLASS)
+CPPFLAGS (-DSEQ_NAMESPACE=EP2D_DIFF)
+CPPFLAGS (-DSUPPORT_iPAT_a_ep2d)
+CPPFLAGS (-DSUPPORT_PACE)
+CPPFLAGS (-DSUPPORT_FAST_IR)
+CPPFLAGS (-DEPI_DISABLE_SAVE_UNCOMBINED)
+CPPFLAGS (-DEPI_SUPPORT_FREQ_FEEDBACK)
+
+# Special card needed
+#CPPFLAGS (-DBUILD_WIPParameterTool)
+
+# signal warnings as errors
+IF_WIN(CPPFLAGS(/WX))
+IF_LINUX(CPPFLAGS(-DMR_MORE_WARNINGS))
+
+##-----------------------------------------------------------------------------
+## include paths
+##
+
+##-----------------------------------------------------------------------------
+## source files
+##
+CPPSOURCES     (a_ep2d_diff)
+CPPSOURCES     (DiffusionRFPulseProperties)
+CPPSOURCES     (DiffusionSBBContainer)
+CPPSOURCES     (SBBDiffusion_Base)
+CPPSOURCES     (SBBDiffusion_Bipolar)
+CPPSOURCES     (SBBDiffusion_Stejskal)
+CPPSOURCES     (SBBDiffusion_Trace_SAFETY)
+CPPSOURCES     (didi)
+CPPSOURCES     (BMatrix)
+CPPSOURCES     (a_ep2d_diff_UI)
+CPPSOURCES     (FreqFeedback_SAFETY)
+CPPSOURCES     (SBBEPIKernelDiffusion)
+CPPSOURCES     (DiffusionOrdering)
+CPPSOURCES     (SBBCompGrad)
+CPPSOURCESFROM (a_ep2d,              ..)
+CPPSOURCESFROM (a_ep_CommonUI,       ..)
+CPPSOURCESFROM (SBBEPIKernel_SAFETY, ../Kernels)
+CPPSOURCESFROM (iPAT,                ../common/iPAT)
+CPPSOURCESFROM (SeqLoopLongTRTrig,   ../common/SeqLoopLongTRTrig)
+CPPSOURCESFROM (SeqLoopFastIR,       ../common/IR)
+CPPSOURCESFROM (a_ep2d_zoom_UINS,    ../common/Excitation)
+CPPSOURCESFROM (calcSPAIRTime     ../common/calcSPAIRTime)
+
+# Special card needed
+#CPPSOURCESFROM (WIPParameterTool, ../../../MrImagingFW/WIPParameterTool)
+
+##-----------------------------------------------------------------------------
+## local linker flags
+##
+
+##-----------------------------------------------------------------------------
+## link libraries
+##
+IF_WIN(LDLIBS (libUILink))
+IF_WIN(LDLIBS (MrUILink ))
+
+LDLIBS (MeasUtils)
+LDLIBS (libSBB)
+LDLIBS (libSBBFW)
+LDLIBS (libGSL)
+LDLIBS (libSeqSysProp)
+LDLIBS (libBalance)
+LDLIBS (libSeqUtil)
+LDLIBS (libSeqUtilFW)
+LDLIBS (libSeqUTIF)
+LDLIBS (libSeqPTX)
+LDLIBS (libUICtrl)
+LDLIBS (MrProtJustVol)
+LDLIBS (AdjAccessIF)
+
+LDLIBS (MrTrace)
+LDLIBS (MrGenericDC)
+
+LDLIBS (UTrace)
+LDLIBS (UConfig)
+LDLIBS (MrFeatureToggle)
+
+STATICLIBS(IterativeDenoisingUIParameter)
+
+# required for MrProtFacade queries
+STATICLIBS (MrProtFacade)
+
+# required for Maxwell correction
+STATICLIBS (MaxwellCorrection)
+
+# required, if SUPPORT_PACE is defined
+LDLIBS (libPACE)
+
+# Requested only if SBBDiffusion is included:
+LDLIBS (MeasNucleiBase)
+
+
+LDLIBS (MrProt)
+LDLIBS (Reflection)
+
+##-----------------------------------------------------------------------------
+## target name
+##
+SIEMENSSEQLIB(ep2d_diff)
+VS_STARTUP_PROJECT(ep2d_diff)

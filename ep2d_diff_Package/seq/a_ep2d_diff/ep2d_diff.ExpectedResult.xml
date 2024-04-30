@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<libSeqUT>
+
+  <!-- xxxxx -->
+  <!-- SMS_bipolar -->
+  <!-- xxxxx -->
+  
+    <ExpectedResult>
+        <Protocol Name="SMS_bipolar" />
+        <Origin Name="RTEB_ORIGIN_fSEQRunKernel">
+          <ErrorCode Name="lFrequNotEquOmegaRFErr" CountNotOK="15">Special case for SMS pulse base frequency centering</ErrorCode>
+        </Origin>
+    </ExpectedResult>
+
+
+  <!-- xxxxx -->
+  <!-- SMS_bipolar_high_accel -->
+  <!-- xxxxx -->
+
+  <ExpectedResult>
+        <Protocol Name="SMS_bipolar_high_accel" />
+        <Origin Name="RTEB_ORIGIN_fSEQRunKernel">
+            <ErrorCode Name="lFrequNotEquOmegaRFErr" CountNotOK="15">Special case for SMS pulse base frequency centering</ErrorCode>
+        </Origin>
+    </ExpectedResult>
+
+
+  <!-- xxxxx -->
+  <!-- SMS_mono -->
+  <!-- xxxxx -->
+
+  <ExpectedResult>
+    <Protocol Name="SMS_mono" />
+    <Origin Name="RTEB_ORIGIN_fSEQRunKernel">
+      <ErrorCode Name="lFrequNotEquOmegaRFErr" CountNotOK="10">Special case for SMS pulse base frequency centering</ErrorCode>
+    </Origin>
+  </ExpectedResult>
+
+
+  <!-- xxxxx -->
+  <!-- SMS_ext_ref_scan -->
+  <!-- xxxxx -->
+  
+  <ExpectedResult>
+    <Protocol Name="SMS_ext_ref_scan" />
+    <Protocol Name="SMS_ext_ref_scan_extphasecorr" />
+    <Origin Name="RTEB_ORIGIN_fSEQRunKernel">
+      <ErrorCode Name="lFrequNotEquOmegaRFErr" CountNotOK="4">Special case for SMS pulse base frequency centering</ErrorCode>
+    </Origin>
+  </ExpectedResult>
+  
+  <ExpectedResult>
+    <!-- Vida-XQ_32Rx -->
+    <!-- Vida-XQ_2Tx_64Rx_MNO -->
+    <!-- Vida-XT_2Tx_128Rx_MNO -->
+    <!-- deLemos3.0 -->
+    <Protocol Name="Terra-XR_8Tx_64Rx_SMS_ext_ref_scan" />
+    <Protocol Name="Terra-XR_8Tx_64Rx_MNO_SMS_ext_ref_scan" />
+    <Protocol Name="Terra-XR_16Tx_64Rx_SMS_ext_ref_scan" />
+    <Protocol Name="Terra-XR_16Tx_64Rx_MNO_SMS_ext_ref_scan" />
+    <Protocol Name="Terra-XT_8Tx_64Rx_SMS_ext_ref_scan" />
+    <Protocol Name="Terra-XT_8Tx_64Rx_MNO_SMS_ext_ref_scan" />
+    <Protocol Name="Terra-XT_16Tx_64Rx_SMS_ext_ref_scan" />
+    <Protocol Name="Terra-XT_16Tx_64Rx_MNO_SMS_ext_ref_scan" />
+    <Protocol Name="Vida-XQ_32Rx_SMS_ext_ref_scan" />
+    <Protocol Name="Vida-XQ_2Tx_64Rx_MNO_SMS_ext_ref_scan" />
+    <Protocol Name="Vida-XT_2Tx_128Rx_MNO_SMS_ext_ref_scan" />
+    <Protocol Name="Lumina-XK_32Rx_SMS_ext_ref_scan" />
+    <Protocol Name="VidaFit-XQ_2Tx_64Rx_MNO_SMS_ext_ref_scan" />
+    <Protocol Name="VidaFit-XQ_64Rx_MNO_SMS_ext_ref_scan" />
+    <Protocol Name="Terra-XR_8Tx_64Rx_SMS_ext_ref_scan_extphasecorr" />
+    <Protocol Name="Terra-XR_8Tx_64Rx_MNO_SMS_ext_ref_scan_extphasecorr" />
+    <Protocol Name="Terra-XR_16Tx_64Rx_SMS_ext_ref_scan_extphasecorr" />
+    <Protocol Name="Terra-XR_16Tx_64Rx_MNO_SMS_ext_ref_scan_extphasecorr" />
+    <Protocol Name="Terra-XT_8Tx_64Rx_SMS_ext_ref_scan_extphasecorr" />
+    <Protocol Name="Terra-XT_8Tx_64Rx_MNO_SMS_ext_ref_scan_extphasecorr" />
+    <Protocol Name="Terra-XT_16Tx_64Rx_SMS_ext_ref_scan_extphasecorr" />
+    <Protocol Name="Terra-XT_16Tx_64Rx_MNO_SMS_ext_ref_scan_extphasecorr" />
+    <Protocol Name="Vida-XQ_32Rx_SMS_ext_ref_scan_extphasecorr" />
+    <Protocol Name="Vida-XQ_2Tx_64Rx_MNO_SMS_ext_ref_scan_extphasecorr" />
+    <Protocol Name="Vida-XT_2Tx_128Rx_MNO_SMS_ext_ref_scan_extphasecorr" />
+    <Protocol Name="Lumina-XK_32Rx_SMS_ext_ref_scan_extphasecorr" />
+    <Protocol Name="VidaFit-XQ_2Tx_64Rx_MNO_SMS_ext_ref_scan_extphasecorr" />
+    <Protocol Name="VidaFit-XQ_64Rx_MNO_SMS_ext_ref_scan_extphasecorr" />
+    <Origin Name="RTEB_ORIGIN_fSEQRunKernel">
+      <ErrorCode Name="lFrequNotEquOmegaRFErr" CountNotOK="6">Special case for SMS pulse base frequency centering</ErrorCode>
+    </Origin>
+  </ExpectedResult>
+    
+</libSeqUT>

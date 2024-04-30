@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SeqUT version="1">
+  <Include type="xml" name="%MRINONPRODUCT%/MrImagingFW/SeqUT.xml"/>
+
+  <ObjectLibrary name="PTX_TestCases"/>
+
+  <TestCondition name="PTXTestCondition" annotation="PTXTestCondition" />
+
+  <TestSuite name="MainSuite">
+    <!-- @SeqUT_Common has execute condition @ExecutionConditionGlobalTests -->
+    <TestSuite name="PTXTestCondition" condition="PTXTestCondition">
+      <!--  execute the suite only if Protocol has ZOOMit excitation -->
+      <TestFixture name="PTX_Test" condition="ExecutionConditionSEQRunKernel">  <!-- execute condition ExecutionConditionSEQRunKernel @SeqUT_CommonExecutionConditions.xml -->
+        <TestCase name="TestPTXExcitation"/>
+      </TestFixture>
+    </TestSuite>
+  </TestSuite>
+
+  
+  <ObjectLibrary name="SMS_TestCases"/>
+
+  <TestCondition name="SMSTestCondition" annotation="SMSTestCondition" />
+
+  <TestCondition name="ExecutionConditionRunKernel" condition="RTEB_ORIGIN_fSEQRunKernel" annotation="OriginCondition"/>
+
+  <TestSuite name="MainSuite">
+    <!-- @SeqUT_Common has execute condition @ExecutionConditionGlobalTests -->
+    <TestSuite name="SMSTestCondition" condition="SMSTestCondition">
+      <!--  execute the suite only if Protocol has slice acceleration -->
+      <TestFixture name="SMS_Test" condition="ExecutionConditionRunKernel">
+        <!-- execute condition @ExecutionConditionRunKernel -->
+        <TestCase name="TestSMS"/>
+      </TestFixture>
+    </TestSuite>
+  </TestSuite>
+</SeqUT>
